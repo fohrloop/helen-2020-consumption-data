@@ -10,6 +10,7 @@ from plotly.subplots import make_subplots
 import plotly.offline
 import numpy as np
 
+
 import csaps
 
 colprev = "2015-2019"
@@ -147,6 +148,25 @@ def plot(df):
             spikedash="solid",
             spikethickness=1,
             spikecolor="#2b2b2b",
+        )
+
+        fig.add_vrect(
+            x0="2020-03-28",
+            x1="2020-04-15",
+            fillcolor="mediumslateblue",
+            annotation=go.layout.Annotation(text="Uusimaa lockdown", textangle=270),
+            annotation_position="inside bottom right",
+            opacity=0.08,
+            line_width=0,
+        )
+        fig.add_vrect(
+            x0="2020-03-17",
+            x1="2020-06-15",
+            fillcolor="purple",
+            annotation=go.layout.Annotation(text="Valmiuslaki", textangle=270),
+            annotation_position="inside bottom left",
+            opacity=0.05,
+            line_width=0,
         )
     figs[1].update_yaxes(tickformat="+%", range=[-0.14, 0.14])
 
