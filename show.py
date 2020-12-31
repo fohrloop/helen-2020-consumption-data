@@ -17,6 +17,7 @@ col2020 = "2020"
 change = "change"
 smoothchange = "smoothed change"
 yearcols = [col2020, colprev]
+changecols = [change, smoothchange]
 
 
 def get_data():
@@ -85,6 +86,7 @@ def get_trace(df, col):
         name=col,
         hoverinfo="text",
         text=hovertext,
+        fill="tozeroy" if col in changecols else None,
     )
 
 
