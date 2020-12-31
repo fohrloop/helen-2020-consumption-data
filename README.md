@@ -1,6 +1,6 @@
 # Helen 2020 data
 
-<iframe frameborder='0' scrolling='no' src='https://np-8.github.io/helen-2020-consumption-data/plot.html'  style="border:none;" ></iframe>
+<iframe frameborder='0' scrolling='no' src='https://np-8.github.io/helen-2020-consumption-data/plot.html'  style="border:none;width:1000px; height: 1100px; " ></iframe>
 
 ### What is this? 
 
