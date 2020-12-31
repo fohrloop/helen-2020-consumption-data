@@ -2,7 +2,7 @@
 
 ### What is this? 
 
-Data from Helen Sähköverkko Oy. The temperature corrected consumption electricity. 
+Data from Helen Sähköverkko Oy. The temperature corrected  electricity consumption. 
 
 - 2014-2019 average values (Gwh)
 - 2020 values (GWh)
