@@ -50,7 +50,7 @@ def get_data():
     df_out.index = timestamps
 
     # Relative change in consumption
-    df_out[change] = 1 - df_out[col2020] / df_out[colprev]
+    df_out[change] = df_out[col2020] / df_out[colprev] - 1
 
     # Smoothed relative change
     df_out[smoothchange] = csaps.csaps(x_new, df_out[change], x_new, smooth=0.0001)
@@ -112,8 +112,10 @@ def plot(df):
     allcols = ([col2020, colprev], (change, smoothchange))
     titles = ("Energy consumption", "Change in energy consumption")
     yaxis_titles = ("Consumption (GWh)", "Change in consumpt.")
-
-    for fig, cols, title, yaxis_title in zip(figs, allcols, titles, yaxis_titles):
+    annotation_placements = ("bottom", "top")
+    for fig, cols, title, yaxis_title, annotation_placement in zip(
+        figs, allcols, titles, yaxis_titles, annotation_placements
+    ):
 
         for col in cols:
             fig.add_trace(get_trace(df, col))
@@ -155,7 +157,7 @@ def plot(df):
             x1="2020-04-15",
             fillcolor="mediumslateblue",
             annotation=go.layout.Annotation(text="Uusimaa lockdown", textangle=270),
-            annotation_position="inside bottom right",
+            annotation_position=f"inside {annotation_placement} right",
             opacity=0.08,
             line_width=0,
         )
@@ -164,7 +166,7 @@ def plot(df):
             x1="2020-06-15",
             fillcolor="purple",
             annotation=go.layout.Annotation(text="Valmiuslaki", textangle=270),
-            annotation_position="inside bottom left",
+            annotation_position=f"inside {annotation_placement} left",
             opacity=0.05,
             line_width=0,
         )
