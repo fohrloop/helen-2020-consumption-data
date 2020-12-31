@@ -1,7 +1,7 @@
 # Helen 2020 data
 
 ***(Click the figure for interactive plot)***
-[![](plot.png)](plot.html)
+[![](plot.png)](https://np-8.github.io/helen-2020-consumption-data/plot.html)
 
 ### What is this? 
 
