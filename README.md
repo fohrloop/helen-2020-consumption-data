@@ -3,7 +3,8 @@
 The content is also published at [GitHub Pages](https://np-8.github.io/helen-2020-consumption-data/).
 
 ***(Click the figure for interactive plot)***
-[![](plot.png)](https://np-8.github.io/helen-2020-consumption-data/plot.html)
+[![](plot1.png)](https://np-8.github.io/helen-2020-consumption-data/)
+[![](plot2.png)](https://np-8.github.io/helen-2020-consumption-data/)
 
 ### What is this? 
 
