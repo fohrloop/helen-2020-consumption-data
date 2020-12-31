@@ -19,6 +19,13 @@ smoothchange = "smoothed change"
 yearcols = [col2020, colprev]
 changecols = [change, smoothchange]
 
+COLORS = {
+    col2020: "#00C49A",
+    colprev: "#FB8F67",
+    change: "#156064",
+    smoothchange: "#F8E16C",
+}
+
 
 def get_data():
     df = pd.read_csv("helen2020-raw.csv")
@@ -87,51 +94,69 @@ def get_trace(df, col):
         hoverinfo="text",
         text=hovertext,
         fill="tozeroy" if col in changecols else None,
+        line_color=COLORS.get(col),
+        hoverlabel=dict(
+            bgcolor="white",
+            bordercolor=COLORS.get(col),
+            font=dict(
+                family="Sans Serif",
+                color="#474747",
+            ),
+        ),
     )
 
 
 def plot(df):
-    fig = make_subplots(
-        rows=2,
-        cols=1,
-        vertical_spacing=0.07,
-        subplot_titles=(
-            "Energy consumption",
-            "Change in energy consumption",
-        ),
-        x_title="Date",
-        row_titles=("Consumption (GWh)", "Change in consumpt."),
-    )
+    figs = [go.Figure() for _ in range(2)]
+    allcols = ([col2020, colprev], (change, smoothchange))
+    titles = ("Energy consumption", "Change in energy consumption")
+    yaxis_titles = ("Consumption (GWh)", "Change in consumpt.")
 
-    rowmap = {col2020: 1, colprev: 1, change: 2, smoothchange: 2}
-    for col, row in rowmap.items():
-        fig.add_trace(get_trace(df, col), row=row, col=1)
+    for fig, cols, title, yaxis_title in zip(figs, allcols, titles, yaxis_titles):
 
-    fig.update_layout(
-        title="Helen data",
-        hovermode="x",
-        hoverdistance=-1,
-        spikedistance=-1,
-        yaxis_range=[-0.2, 17],
-        autosize=False,
-        width=1000,
-        height=1200,
-        font=dict(family="Open Sans", size=16, color="gray"),
-        template="ggplot2",
-    )
-    fig.update_yaxes(tickformat="+%", range=[-0.14, 0.14], row=2, col=1)
-    fig.update_xaxes(
-        showgrid=True,
-        tickformat="%b",  # months
-        ticklabelmode="period",  # one month boxes
-        dtick="M1",
-        spikemode="across",
-        spikesnap="cursor",
-        spikedash="solid",
-        spikethickness=1,
-        spikecolor="#2b2b2b",
-    )
-    plotly.offline.plot(fig, filename="plot")
+        for col in cols:
+            fig.add_trace(get_trace(df, col))
+
+        fig.update_layout(
+            title=title,
+            xaxis_title="Date",
+            yaxis_title=yaxis_title,
+            hovermode="x",
+            hoverdistance=-1,
+            spikedistance=-1,
+            yaxis_range=[-0.2, 17],
+            autosize=True,
+            font=dict(family="Open Sans", size=16, color="gray"),
+            template="ggplot2",
+            legend=dict(
+                x=0,
+                y=0.7,
+                traceorder="normal",
+                font=dict(
+                    size=12,
+                ),
+            ),
+        )
+        fig.update_xaxes(
+            showgrid=True,
+            tickformat="%b",  # months
+            ticklabelmode="period",  # one month boxes
+            dtick="M1",
+            spikemode="across",
+            spikesnap="cursor",
+            spikedash="solid",
+            spikethickness=1,
+            spikecolor="#2b2b2b",
+        )
+    figs[1].update_yaxes(tickformat="+%", range=[-0.14, 0.14])
+
+    for i, fig in enumerate(figs):
+        plotly.offline.plot(
+            fig,
+            filename=f"plot{i+1}.html",
+            auto_open=False,
+            include_plotlyjs=i == 0,
+        )
 
 
 if __name__ == "__main__":

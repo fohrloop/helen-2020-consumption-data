@@ -3,13 +3,13 @@
 ### What is this? 
 
 Data from Helen Sähköverkko Oy. The temperature corrected consumption electricity. 
+
 - 2014-2019 average values (Gwh)
 - 2020 values (GWh)
 
 The second plot is the change in the consumption in %. (positive values indicate that consumption was greater during 2020) 
 
-<iframe frameborder='0' scrolling='no' src='https://np-8.github.io/helen-2020-consumption-data/plot.html'  style="border:none;width:1000px; height: 1190px; " ></iframe>
-
+[PLOTS]
 
 ### Raw data
 
