@@ -14,6 +14,11 @@ with open("plot2.html") as f:
 
 contents = contents.replace("<p>[PLOTS]</p>", plot1 + plot2)
 
+with open("pandoc.css") as f:
+    style = f.read()
+
+contents = contents.replace("</head>", "\n<style>\n" + style + "\n</style>\n</head>")
+
 with open("index.html", "w") as f:
     f.write(contents)
 

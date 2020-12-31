@@ -21,3 +21,11 @@ Original source of the data is a picture posted [here](https://www.facebook.com/
 ### Creating the plots
 
 Run `python show.py` (requirements are listed in `requirements.txt`).
+
+### Assets
+- [show.py](show.py)
+- [requirements.txt](requirements.txt)
+- [helen2020.csv](helen2020.csv)
+
+### Source code
+GitHub: [https://github.com/np-8/helen-2020-consumption-data/](https://github.com/np-8/helen-2020-consumption-data/)
