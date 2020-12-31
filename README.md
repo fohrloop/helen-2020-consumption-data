@@ -1,28 +1,5 @@
 # Helen 2020 data
 
-The content is also published at [GitHub Pages](https://np-8.github.io/helen-2020-consumption-data/).
+The content is  published at [GitHub Pages](https://np-8.github.io/helen-2020-consumption-data/).
 
-***(Click the figure for interactive plot)***
-[![](plot1.png)](https://np-8.github.io/helen-2020-consumption-data/)
-[![](plot2.png)](https://np-8.github.io/helen-2020-consumption-data/)
-
-### What is this? 
-
-Data from Helen Sähköverkko Oy. The temperature corrected consumption electricity. 
-- 2014-2019 average values (Gwh)
-- 2020 values (GWh)
-
-The second plot is the change in the consumption in %. (positive values indicate that consumption was greater during 2020) 
-
-
-### Raw data
-
-Original source of the data is a picture posted [here](https://www.facebook.com/groups/587136934970543/permalink/1353368221680740/). The data was extracted from the picture with [Engauge digitizer](https://markummitchell.github.io/engauge-digitizer/). See [helen2020.dig](helen2020.dig) for the digitizer file and the picture below for digitization outcome. The raw data is located at [helen2020-raw.csv](helen2020-raw.csv), and the final data file at [helen2020.csv](helen2020.csv). An educated guess for the accuracy (with ~90% certainty) of digitization is roughly 0.7 days (x-direction) and 0.05 GWh (y-direction). Even better accuracy could perhaps be obtained by enlarging the image before digitization.
-
-<p align="center">
-<img src="data-fit.png" width="400">
-</p>
-
-### Creating the plots
-
-Run `python show.py` (requirements are listed in `requirements.txt`).
+See the [gh-pages](https://github.com/np-8/helen-2020-consumption-data/tree/gh-pages) for the latest files. 
